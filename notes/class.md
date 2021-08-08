@@ -11,7 +11,7 @@ A copy constructor is called if:
 3. When an object is constructed based on another object of the same class. 
 4. When the compiler generates a temporary object.
 
-However the number of times that the copy constructor is called can be reducec by [Return Value Optimization](https://en.wikipedia.org/wiki/Copy_elision#Return_value_optimization).
+However the number of times that the copy constructor is called can be reducec by [Return Value Optimization](https://en.wikipedia.org/wiki/Copy_elision#Return_value_optimization). For example, the following code snippet calls the copy constructor *twice*, once when an object is returned by `f`, once when the returned value is assigned to `obj`.
 
 ```C++
 #include <iostream>
@@ -22,11 +22,11 @@ struct C {
 };
 
 C f() {
-  return C();
+  return C();  // here the copy constructor is called.
 }
 
 int main() {
   std::cout << "Hello World!\n";
-  C obj = f();
+  C obj = f();  // here the copy constructor is called.
 }
 ```
